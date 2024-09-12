@@ -1,0 +1,18 @@
+@model SharedModels.WeatherForecast
+
+<h2>Create Weather Forecast</h2>
+<form asp-action="Create" method="post">
+    <div>
+        <label>Date</label>
+        <input asp-for="Date" type="date" />
+    </div>
+    <div>
+        <label>TemperatureC</label>
+        <input asp-for="TemperatureC" type="number" />
+    </div>
+    <div>
+        <label>Summary</label>
+        <input asp-for="Summary" type="text" />
+    </div>
+    <button type="submit">Create</button>
+</form>

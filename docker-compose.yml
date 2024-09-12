@@ -1,0 +1,37 @@
+version: '3.4'
+
+services:
+  service1:
+    image: service1
+    container_name: service1
+    build:
+      context: .
+      dockerfile: Service1/Dockerfile
+    ports:
+      - "5001:5001"
+
+  service2:
+    image: service2
+    container_name: service2
+    build:
+      context: .
+      dockerfile: Service2/Dockerfile
+    ports:
+      - "5002:5002"
+    depends_on:
+      - service1
+    environment:
+      - Service1Url=http://service1
+
+  frontend:
+    image: frontend
+    container_name: frontend
+    build:
+      context: .
+      dockerfile: Frontend/Dockerfile
+    ports:
+      - "5000:5000"
+    depends_on:
+      - service2
+    environment:
+      - Service2Url=http://service2
