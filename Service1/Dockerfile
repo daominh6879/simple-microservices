@@ -1,11 +1,10 @@
 ﻿FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
 WORKDIR /app
-EXPOSE 80
 
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
-COPY ["Service1/", "Service1/"]
-COPY ["SharedModels/", "SharedModels/"]
+COPY ["Service1/Service1.csproj", "Service1/"]
+COPY ["SharedModels/SharedModels.csproj", "SharedModels/"]
 RUN dotnet restore "Service1/Service1.csproj"
 COPY . .
 WORKDIR "/src/Service1"
