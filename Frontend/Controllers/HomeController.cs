@@ -24,6 +24,10 @@ public class HomeController : Controller
         var data = JsonConvert.DeserializeObject<IEnumerable<string>>(response);
         return View(data);
     }
+    public async Task<IActionResult> Privacy()
+    {
+        return View();
+    }
 
     public async Task<IActionResult> Details(int id)
     {

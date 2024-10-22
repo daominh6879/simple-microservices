@@ -9,8 +9,7 @@ services:
     networks:
       - microservices
     ports:
-      - "5001:5001"
-
+      - "5001:8080"
   service2:
     image: service2
     build:
@@ -18,12 +17,12 @@ services:
       dockerfile: Service2/Dockerfile
     networks:
       - microservices
-    ports:
-      - "5002:5002"
     depends_on:
       - service1
     environment:
-      - Service1Url=http://localhost:5001
+      - Service1Url=http://service1:8080
+    ports:
+      - "5002:8080"
 
   frontend:
     image: frontend
@@ -33,11 +32,11 @@ services:
     networks:
       - microservices
     ports:
-      - "5000:5000"
+      - "5000:8080"
     depends_on:
       - service2
     environment:
-      - Service2Url=http://localhost:5002
+      - Service2Url=http://service2:8080
 
 networks:
   microservices:
