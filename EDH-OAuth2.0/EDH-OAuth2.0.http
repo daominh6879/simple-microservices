@@ -1,0 +1,6 @@
+@EDH_OAuth2._0_HostAddress = http://localhost:5208
+
+GET {{EDH_OAuth2._0_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
